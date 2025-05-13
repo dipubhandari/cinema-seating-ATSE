@@ -28,18 +28,19 @@ function CinemaSeating() {
   useEffect(() => {
     initGrid();
   }, []);
-
+// getting the priority rows from the seats 
   function getPriorityRows() {
     const allRows = [...Array(rows).keys()];
     const used = new Set([...mostPopularRows, ...popularRows]);
     const lessPopular = allRows.filter((r) => !used.has(r));
     return [...mostPopularRows, ...popularRows, ...lessPopular];
   }
+//getting the priority rows from the seats ends here---------------------------------
 
   function createSeat(row, col, type = "available") {
     return { row, col, type, groupId: null, animation: false };
   }
-
+// initiallize the grid of the seats
   function initGrid() {
     const newGrid = [];
     for (let r = 0; r < rows; r++) {
@@ -69,7 +70,9 @@ function CinemaSeating() {
     setBookingHistory([]);
     setGroupCounter(1);
   }
+// -----------------------initiallize the grid of the seats ends here------------------------------------
 
+// check if block of groupsize can be placed in a row
   function isValidGroupSpot(row, startCol, size) {
     if (startCol + size > seatCols.length) return false;
     const realCols = seatCols.slice(startCol, startCol + size);
@@ -81,12 +84,17 @@ function CinemaSeating() {
     }
     return true;
   }
+// ------------// check if block of groupsize can be placed in a row ends here--------------------
 
+// runs when clicked on Add Group button to allocate the seats
   function assignGroup(size) {
+    // get the priorityrows according to the priority and keep in variable
     const priorityRows = getPriorityRows();
     const newGrid = JSON.parse(JSON.stringify(grid));
+    // outer loop goes prority wise
     for (let r of priorityRows) {
       for (let i = 0; i <= seatCols.length - size; i++) {
+        // if valid group spot found
         if (isValidGroupSpot(r, i, size)) {
           const colsToAssign = seatCols.slice(i, i + size);
           const booking = [];
@@ -94,6 +102,7 @@ function CinemaSeating() {
             newGrid[r][col].type = "occupied";
             newGrid[r][col].groupId = `G${groupCounter}`;
             newGrid[r][col].animation = true;
+            // keep the booking in a booking variable
             booking.push({ row: r, col });
           }
           setGrid(newGrid);
@@ -103,9 +112,12 @@ function CinemaSeating() {
         }
       }
     }
+    // if rows finished to scan Alert this message
     alert("No space for group of " + size);
   }
+// ---------- runs when clicked on Add Group button to allocate the seats ends here---------------
 
+// runs when user click on solo allocation button
   function assignIndividual() {
     const priorityRows = getPriorityRows();
     const newGrid = JSON.parse(JSON.stringify(grid));
@@ -149,7 +161,9 @@ function CinemaSeating() {
 
     alert("No space for individual");
   }
+// --------------------------runs when user click on solo allocation button --------------------------
 
+// to cancel booking
   function cancelLastBooking() {
     if (bookingHistory.length === 0) return;
     const newGrid = JSON.parse(JSON.stringify(grid));
@@ -161,7 +175,10 @@ function CinemaSeating() {
     setGrid(newGrid);
     setBookingHistory((prev) => prev.slice(0, -1));
   }
+  // --------to cancel booking-----------
 
+
+  // function to display the seats
   function renderSeat(seat, r, c) {
     if (!seat) return <div key={`empty-${r}-${c}`} className="empty-space" />;
     const rowLabel = String.fromCharCode(65 + r);
@@ -182,7 +199,7 @@ function CinemaSeating() {
       </div>
     );
   }
-
+// ---------- function to display the seats ends here ---------------
   return (
     <div className={`App ${darkMode ? "dark-mode" : ""}`}>
       <h1 className="header">Cinema Seating Booking with your Groups...</h1>
