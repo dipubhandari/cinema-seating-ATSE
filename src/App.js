@@ -5,7 +5,6 @@ import CinemaSeating from './Seating';
 function App() {
   return (
    <div>
-    Hello World
     <CinemaSeating/>
    </div>
   );

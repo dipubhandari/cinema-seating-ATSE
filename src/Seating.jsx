@@ -17,7 +17,6 @@ const brokenChance = 0.1;
 const mostPopularRows = [3, 4, 5, 6];
 const popularRows = [7, 8, 9];
 
-
 function CinemaSeating() {
   const [grid, setGrid] = useState([]);
   const [groupCounter, setGroupCounter] = useState(1);
@@ -202,7 +201,7 @@ function CinemaSeating() {
 // ---------- function to display the seats ends here ---------------
   return (
     <div className={`App ${darkMode ? "dark-mode" : ""}`}>
-      <h1 className="header">Cinema Seating Booking with your Groups...</h1>
+       <h1 className="header">ATSE CINEMA  </h1>
       <div className="controls">
         <label htmlFor="groupSize"><strong>Group Size:</strong></label>
         <input
@@ -216,11 +215,13 @@ function CinemaSeating() {
         <button onClick={() => assignGroup(groupSize)}>🎟️ Add Group</button>
         <button onClick={assignIndividual}>👤 Add Solo</button>
         <button onClick={cancelLastBooking}>❌ Cancel Last Booking</button>
-        <button onClick={initGrid}>🔄 Reset Seating</button>
         <button onClick={() => setDarkMode(!darkMode)}>
           {darkMode ? "🌞 Light Mode" : "🌙 Dark Mode"}
         </button>
-      </div>
+        <button onClick={() => setDarkMode(!darkMode)}>
+          {darkMode ? "👤 Switch to Normal" : "🔒 Switch to Admin"}
+        </button>
+              </div>
 
       <div className="legend">
         {[

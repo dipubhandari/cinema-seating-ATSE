@@ -42,7 +42,7 @@ body {
   padding: 8px 14px;
   font-size: 15px;
   border: none;
-  background-color: #000000;
+  background-color: #32829b;
   color: white;
   border-radius: 4px;
   cursor: pointer;
@@ -89,11 +89,11 @@ body {
 }
 
 .accessible {
-  background-color: #c9bb20; /* Blue */
+  background-color: #209fc9; /* Blue */
 }
 
 .broken {
-  background-color: #948d8d; /* Grey */
+  background-color: #999191; /* Grey */
 }
 
 /* Row popularity indicators */
