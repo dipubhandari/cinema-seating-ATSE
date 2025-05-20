@@ -75,13 +75,12 @@ body {
   border: 1px solid #bbb;
 }
 
-/* Colorblind-safe palette */
 .available {
-  background-color: #88cc88; /* Green */
+  background-color: #77e777; /* Green */
 }
 
 .occupied {
-  background-color: #ff9999; /* Red */
+  background-color: #ff0000; /* Red */
 }
 
 .vip {
@@ -89,24 +88,24 @@ body {
 }
 
 .accessible {
-  background-color: #209fc9; /* Blue */
+  background-color: #209fc9; 
 }
 
 .broken {
-  background-color: #999191; /* Grey */
+  background-color: #6c6969; 
 }
 
-/* Row popularity indicators */
+/*  popularity indicators */
 .most-popular {
-  border: 3px solid #ffcc00;
+    border: 2px solid #0022ff; 
 }
 
 .popular {
-  border: 3px dashed #3db7dd;
+   border: 2px solid #ff0000;
 }
 
 .less-popular {
-  border: 3px dotted #999;
+  border: 2px solid rgb(255, 0, 191);
 }
 
 /* Screen Label */
@@ -138,7 +137,6 @@ body {
   text-align: center;
   border-radius: 5px;
   cursor: pointer;
-  border: 1px solid #666;
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
@@ -153,7 +151,6 @@ body {
   height: 28px;
 }
 
-/* Footer */
 .footer {
   background-color: #333;
   color: white;
@@ -162,7 +159,7 @@ body {
   position: relative;
 }
 
-/* Responsive Design */
+/*  */
 @media (max-width: 768px) {
   .cinema {
     grid-template-columns: repeat(23, 20px);
