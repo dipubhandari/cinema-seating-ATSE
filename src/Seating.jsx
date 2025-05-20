@@ -273,8 +273,9 @@ function CinemaSeating() {
     <div className={`App ${darkMode ? "dark-mode" : ""}`}>
       <ToastContainer />
       <h1 className="header">
+        You Are
         {" "}
-        {userType ? "Normal User" : "Admin"} at ATSE CINEMA{" "}
+        {userType ? "Normal User" : "Admin"}{" "}
       </h1>
       <div className="controls">
         <label htmlFor="groupSize">
